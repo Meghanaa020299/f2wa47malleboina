@@ -1,14 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+
+/* GET users listing. */
 router.get('/', function(req, res, next) {
-    var x = Math.floor(Math.random()*10);
-    var a = Math.acosh(x);
-    var b = Math.log1p(x);
-    var c = Math.tan(x);
-    var d = Math.sqrt(x);
-  res.render('computation', { title: 'My Bonus', x:x, a:a, b:b, c:c, d:d });
+  var random = Math.random() * 15;
+  res.send(`Math.tan() applied to ${random} is ${Math.tan(random)}`);
 });
+
+router.get('/:id', function(req, res, next) {
+  res.send(`Math.tan() applied to ${req.params.id} is ${Math.tan(req.params.id)}`);
+});
+
+
 
 module.exports = router;
